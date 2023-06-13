@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Assets/css/cssReset.css">
+    <link rel="stylesheet" href="/Assets/css/stylesheetAll.css">
+    <title>Login</title>
+    <style>
+        :root {
+            --font-size-very-small: 0.75rem;
+            --font-size-small: 1rem;
+            --font-size-medium: 1.25rem;
+            --font-size-small-big: 1.5rem;
+            --font-size-big: 2rem;
+            --font-size-very-big: 2.5rem;
+        }
+
+        body {
+            background-color: #1F3265;
+            color: #fff;
+            font-size: var(--font-size-small);
+            width: 100vw;
+        }
+
+        .containerLogin {
+            background-color: #2F57BD;
+            text-align: center;
+            margin-left: 15%;
+            margin-right: 15%;
+            margin-top: 35%;
+            padding: 20px 8px 20px 8px;
+            border: 0px solid #2F57BD;
+            border-radius: 10px;
+        }
+
+        .login {
+            font-size: var(--font-size-medium);
+            margin-bottom: 20px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .campoSenha {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .txts {
+            width: 136px;
+        }
+
+        .btnEntrar {
+            color: #fff;
+            font-weight: bold;
+            background-color: #01003E;
+            border: 0px;
+            border-radius: 5px;
+            height: 23px;
+            width: 65px;
+        }
+
+        .btnEntrar:hover {
+            color: #000000;
+            background-color: #00c75a;
+            transition: 1s;
+        }
+
+        #txtSenha {
+            margin-left: 8px;
+        }
+
+        @media screen and (min-width: 480px) {
+            .text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="containerLogin">
+        <h1 class="login"><strong>LOGIN</strong></h1>
+        <div class="containerCampos">
+            <div class="campoEmail">
+                <label class="labels" for="email">E-mail: </label>
+                <input class="txts" type="text" name="email" placeholder="evorh@gmail.com">
+            </div>
+            <div class="campoSenha">
+                <label class="labels" for="senha">Senha:</label>
+                <input class="txts" id="txtSenha" type="password" name="senha">
+            </div>
+        </div>
+        <input class="btnEntrar" type="submit" value="ENTRAR">
+    </div>
+</body>
+
+</html>
