@@ -1,40 +1,146 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Assets/css/cssReset.css">
+    <link rel="stylesheet" href="/Assets/css/stylesheetAll.css">
     <title>Cadastro de Funcionários</title>
+    <style>
+        :root {
+            --font-size-very-small: 0.75rem;
+            --font-size-small: 1rem;
+            --font-size-medium: 1.25rem;
+            --font-size-small-big: 1.5rem;
+            --font-size-big: 2rem;
+            --font-size-very-big: 2.5rem;
+            --font-syze-very-very-big: 3rem;
+        }
+
+        body {
+            background-color: #1F3265;
+            color: #fff;
+            font-size: var(--font-size-small);
+            width: 100vw;
+        }
+
+        .containerCad {
+            flex-direction: column;
+            background-color: #2F57BD;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 35%;
+            padding: 30px 5px 30px 5px;
+            border: 0px solid #2F57BD;
+            border-radius: 10px;
+        }
+
+        .cadFun {
+            text-align: center;
+            font-size: var(--font-size-big);
+            margin-bottom: 25px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .txts {
+            width: 90px;
+        }
+
+        .buttons{
+            margin-top: 20px;
+            margin-right: 10px;
+            text-align: end;
+        }
+
+        .btn {
+            color: #fff;
+            font-weight: bold;
+            background-color: #01003E;
+            border: 0px;
+            border-radius: 5px;
+            height: 25px;
+        }
+
+        .btn:hover {
+            color: #000000;
+            background-color: #00c75a;
+            transition: 1s;
+        }
+
+        #btnCad {
+            width: 93px;
+        }
+
+        #btnClear {
+            width: 125px;
+            margin-left: 5px;
+        }
+
+        #txtNome {
+            width: 200px;
+        }
+        #txtDtNasci {
+            width: 100px;
+        }
+    </style>
 </head>
+
 <body>
-    <div>
-        <h1>Cadastrar Funcionário</h1>
-        <label for="nome">Nome Completo: </label>
-        <input type="text" name="nome">
-        <label for="dtNascimento">Data de Nascimento: </label>
-        <input type="date" name="dtNascimento">
-        <label for="cpf">CPF: </label>
-        <input type="text" name="cpf" placeholder="999.999.999-99">
-        <label for="celular">Celular: </label>
-        <input type="text" name="celular" placeholder="(99) 99999-9999">
-        <label for="cep">CEP: </label>
-        <input type="text" name="cep" placeholder="99999-999">
-        <label for="rua">Rua: </label>
-        <input type="text" name="rua">
-        <label for="bairro">Bairro: </label>
-        <input type="text" name="bairro">
-        <label for="num">N°: </label>
-        <input type="text" name="num">
-        <label for="nTem"> / Não tem </label>
-        <input type="checkbox" name="ntem">
-        <label for="complemento">Complemento: </label>
-        <input type="text" name="complemento">
-        <label for="cidade">Cidade: </label>
-        <input type="text" name="cidade">
-        <label for="email">E-mail: </label>
+    <div class="containerCad">
+        <h1 class="cadFun">CADASTRAR FUNCIONÁRIO</h1>
+        <div class="campoNome">
+        <label class="labels" for="nome">Nome Completo: </label>
+        <input class="txts" id="txtNome" type="text" name="nome">
+    </div>
+    <div class="campoDtNasci">
+        <label class="labels" for="dtNascimento">Data de Nascimento: </label>
+        <input class="txts" id="txtDtNasci" type="date" name="dtNascimento">
+    </div>
+    <div class="campoCpf">
+        <label class="labels" for="cpf">CPF: </label>
+        <input class="txts" id="txtCpf" type="text" name="cpf" placeholder="999.999.999-99">
+    </div>
+    <div class="campoCel">
+        <label class="labels" for="celular">Celular: </label>
+        <input class="txts" id="txtCel" type="text" name="celular" placeholder="(99) 99999-9999">
+    </div>
+    <div class="campoCep">
+        <label class="labels" for="cep">CEP: </label>
+        <input class="txts" id="txtCep" type="text" name="cep" placeholder="99999-999">
+    </div>
+    <div class="campoRua">
+        <label class="labels" for="rua">Rua: </label>
+        <input class="txts" id="txtRua" type="text" name="rua">
+    </div>
+    <div class="campoBairro">
+        <label class="labels" for="bairro">Bairro: </label>
+        <input class="txts" id="txtBairro" type="text" name="bairro">
+    </div>
+    <div class="campoNum">
+        <label class="labels" for="num">N°: </label>
+        <input class="txts" id="txtNum" type="text" name="num">
+        <label class="labels" for="nTem"> / Não tem </label>
+        <input type="checkbox" id="chckBoxNtem" name="ntem">
+    </div>
+    <div class="campoCompl">
+        <label class="labels" for="complemento">Complemento: </label>
+        <input class="txts" id="txtCompl" type="text" name="complemento">
+    </div>
+    <div class="campoCidade">
+        <label class="labels" for="cidade">Cidade: </label>
+        <input class="txts" id="txtCidade" type="text" name="cidade">
+    </div>
+    <div class="campoEmail">
+        <label class="labels" for="email">E-mail: </label>
         <input type="email" name="email" placeholder="evorhcontato@gmail.com">
-        <input type="submit" value="Cadastrar">
-        <input type="button" value="Limpar Campos">
+    </div>
+        <div class="buttons">
+            <input class="btn" id="btnCad" type="submit" value="CADASTRAR">
+            <input class="btn" id="btnClear" type="button" value="LIMPAR CAMPOS">
+        </div>
     </div>
 </body>
+
 </html>

@@ -16,6 +16,7 @@
             --font-size-small-big: 1.5rem;
             --font-size-big: 2rem;
             --font-size-very-big: 2.5rem;
+            --font-syze-very-very-big: 3rem;
         }
 
         body {
@@ -31,14 +32,14 @@
             margin-left: 15%;
             margin-right: 15%;
             margin-top: 35%;
-            padding: 20px 8px 20px 8px;
+            padding: 30px 8px 30px 8px;
             border: 0px solid #2F57BD;
             border-radius: 10px;
         }
 
         .login {
-            font-size: var(--font-size-medium);
-            margin-bottom: 20px;
+            font-size: var(--font-size-big);
+            margin-bottom: 25px;
             text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
 
@@ -71,9 +72,73 @@
             margin-left: 8px;
         }
 
-        @media screen and (min-width: 480px) {
-            .text {
-                font-size: 16px;
+        @media screen and (min-width: 600px) {
+            .labels {
+                font-size: var(--font-size-medium);
+            }
+
+            .txts {
+                font-size: var(--font-size-medium);
+                width: 200px;
+            }
+
+            .btnEntrar {
+                font-size: var(--font-size-small);
+                width: 85px;
+                height: 30px;
+                border-radius: 7px;
+            }
+
+            #txtSenha {
+                margin-left: 10px;
+            }
+        }
+
+        @media screen and (min-width: 1000px) {
+            .containerLogin {
+                margin-right: 25%;
+                margin-left: 25%;
+                margin-top: 15%;
+            }
+
+            .login {
+                font-size: var(--font-size-very-big);
+            }
+
+            .txts {
+                width: 300px;
+            }
+
+            .btnEntrar {
+                font-size: var(--font-size-small);
+                width: 85px;
+                height: 30px;
+                border-radius: 7px;
+            }
+
+            #txtSenha {
+                margin-left: 11px;
+            }
+        }
+
+        @media screen and (min-width: 1600px) {
+            .login {
+                font-size: var(--font-syze-very-very-big);
+            }
+
+            .labels {
+                font-size: var(--font-size-big);
+            }
+
+            .txts {
+                font-size: var(--font-size-medium);
+                width: 350px;
+            }
+
+            .btnEntrar {
+                font-size: var(--font-size-medium);
+                width: 100px;
+                height: 40px;
             }
         }
     </style>
