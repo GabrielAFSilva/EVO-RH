@@ -7,7 +7,7 @@ const getAll = async (_req, res) => {
 
 const cadastrarFuncionarios = async (req, res) => {
     const cadFuncionario = await funcinariosModel.cadastrarFuncionarios(req.body);
-    return res.status(201).json(cadastrarFuncionarios);
+    return res.status(201).json(cadFuncionario);
 };
 
 const deleteFuncionarios = async (req, res) => {

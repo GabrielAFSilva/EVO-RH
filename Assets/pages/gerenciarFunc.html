@@ -1,43 +1,279 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Assets/css/cssReset.css">
+    <link rel="stylesheet" href="/Assets/css/stylesheetAll.css">
     <title>Gerenciamento de Funcionários</title>
+    <style>
+        :root {
+            --font-size-very-small: 0.75rem;
+            --font-size-small: 1rem;
+            --font-size-medium: 1.25rem;
+            --font-size-small-big: 1.5rem;
+            --font-size-big: 2rem;
+            --font-size-very-big: 2.5rem;
+            --font-syze-very-very-big: 3rem;
+            --txt-syze-small: 100px;
+            --txt-syze-small-medium: 150px;
+            --txt-syze-medium: 200px;
+            --txt-syze-small-big: 250px;
+            --txt-syze-big: 300px;
+            --txt-syze-very-big: 400px;
+            --txt-syze-master: 700px;
+            --txt-syze-very-master: 850px;
+        }
+
+        body {
+            background-color: #1F3265;
+            color: #fff;
+            font-size: var(--font-size-small);
+            width: 100vw;
+        }
+
+        .containerGen {
+            background-color: #2F57BD;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 35%;
+            padding: 30px 5px 30px 5px;
+            border: 0px solid #2F57BD;
+            border-radius: 10px;
+        }
+
+        .containerCampos {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .campos {
+            display: flex;
+            flex-direction: column;
+            padding-left: 10px;
+        }
+
+        .genFun {
+            text-align: center;
+            font-size: var(--font-size-big);
+            margin-bottom: 25px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .txts {
+            width: var(--txt-syze-small);
+            margin-top: 3px;
+            margin-bottom: 10px;
+        }
+
+        .txtsBig {
+            width: var(--txt-syze-small-big);
+            margin-top: 3px;
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            padding-top: 20px;
+            padding-right: 10px;
+            text-align: end;
+        }
+
+        .btn {
+            color: #fff;
+            font-weight: bold;
+            background-color: #01003E;
+            border: 0px;
+            border-radius: 5px;
+            height: 25px;
+        }
+
+        .btn:hover {
+            color: #000000;
+            background-color: #00c75a;
+            transition: 1s;
+        }
+
+        #btnAlt {
+            width: 65px;
+        }
+
+        #btnAtualizar {
+            width: 85px;
+            margin-left: 5px;
+        }
+
+        #btnExcluir {
+            width: 70px;
+            margin-left: 5px;
+        }
+
+        @media screen and (min-width: 600px) {
+            .containerGen {
+                margin-top: 30%;
+                margin-left: 10%;
+                margin-right: 10%;
+                padding: 30px 10px 30px 10px;
+            }
+
+            .labels {
+                font-size: var(--font-size-medium);
+            }
+
+            .txts {
+                font-size: var(--font-size-medium);
+                width: var(--txt-syze-small-medium);
+            }
+
+            .txtsBig {
+                font-size: var(--font-size-medium);
+                width: var(--txt-syze-very-big);
+            }
+
+            .btn {
+                height: 30px;
+                font-size: var(--font-size-small);
+            }
+
+            #btnAlt {
+                width: 75px;
+            }
+
+            #btnAtualizar {
+                width: 95px;
+            }
+
+            #btnExcluir {
+                width: 80px;
+            }
+
+            @media screen and (min-width: 1000px) {
+                .containerGen {
+                    margin-top: 15%;
+                    padding: 30px 15px 30px 15px;
+                }
+
+                .genFun {
+                    font-size: var(--font-size-very-big);
+                }
+
+                .labels {
+                    font-size: var(--font-size-small-big);
+                }
+
+                .txts {
+                    font-size: var(--font-size-small-big);
+                    width: var(--txt-syze-small-big);
+                }
+
+                .txtsBig {
+                    font-size: var(--font-size-small-big);
+                    width: var(--txt-syze-master);
+                }
+
+                .btn {
+                    height: 35px;
+                    font-size: var(--font-size-medium);
+                }
+
+                #btnAlt {
+                    width: 95px;
+                }
+
+                #btnAtualizar {
+                    width: 110px;
+                }
+
+                #btnExcluir {
+                    width: 95px;
+                }
+
+            }
+
+            @media screen and (min-width: 1600px) {
+                .containerGen {
+                    margin-top: 8%;
+                    margin-left: 25%;
+                    margin-right: 25%;
+                    padding: 30px 15px 30px 15px;
+                }
+            }
+
+            @media screen and (min-width: 1900px) {
+                .txtsBig {
+                    width: var(--txt-syze-very-master);
+                }
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <div>
-        <h1>Gerenciar Funcionário</h1>
-        <label for="slctFunc">Funcionário: </label>
-        <select name="slctFunc"></select>
-        <label for="nome">Nome Completo: </label>
-        <input type="text" name="nome">
-        <label for="dtNascimento">Data de Nascimento: </label>
-        <input type="date" name="dtNascimento">
-        <label for="cpf">CPF: </label>
-        <input type="text" name="cpf" placeholder="999.999.999-99">
-        <label for="celular">Celular: </label>
-        <input type="text" name="celular" placeholder="(99) 99999-9999">
-        <label for="cep">CEP: </label>
-        <input type="text" name="cep" placeholder="99999-999">
-        <label for="rua">Rua: </label>
-        <input type="text" name="rua">
-        <label for="bairro">Bairro: </label>
-        <input type="text" name="bairro">
-        <label for="num">N°: </label>
-        <input type="text" name="num">
-        <label for="nTem"> / Não tem </label>
-        <input type="checkbox" name="ntem">
-        <label for="complemento">Complemento: </label>
-        <input type="text" name="complemento">
-        <label for="cidade">Cidade: </label>
-        <input type="text" name="cidade">
-        <label for="email">E-mail: </label>
-        <input type="email" name="email" placeholder="evorhcontato@gmail.com">
-        <input type="button" value="Alterar">
-        <input type="submit" value="Atualizar">
-        <input type="submit" value="Excluir">
-    </div>
+    <form method="post" class="containerGen">
+        <h1 class="genFun">Gerenciar Funcionário</h1>
+        <div class="containerCampos">
+            <div class="campos">
+                <label class="labels" for="slctFunc">Funcionário: </label>
+                <select class="txtsBig" name="slctFunc">
+                    <option value="" disabled selected>Selecione o Funcionário</option>
+                </select>
+            </div>
+            <div class="campos">
+                <label class="labels" for="nome">Nome Completo: </label>
+                <input class="txtsBig" id="txtNome" type="text" name="nome" placeholder="Nome Completo">
+            </div>
+            <div class="campos">
+                <label class="labels" for="dtNascimento">Data de Nascimento: </label>
+                <input class="txts" id="txtDtNasci" type="date" name="dtNascimento">
+            </div>
+            <div class="campos">
+                <label class="labels" for="cpf">CPF: </label>
+                <input class="txts" id="txtCpf" type="text" name="cpf" placeholder="999.999.999-99">
+            </div>
+            <div class="campos">
+                <label class="labels" for="celular">Celular: </label>
+                <input class="txts" id="txtCel" type="text" name="celular" placeholder="(99) 99999-9999">
+            </div>
+            <div class="campos">
+                <label class="labels" for="cep">CEP: </label>
+                <input class="txts" id="txtCep" type="text" name="cep" placeholder="99999-999">
+            </div>
+            <div class="campos">
+                <label class="labels" for="rua">Rua: </label>
+                <input class="txtsBig" id="txtRua" type="text" name="rua" placeholder="Rua">
+            </div>
+            <div class="campos">
+                <label class="labels" for="bairro">Bairro: </label>
+                <input class="txts" id="txtBairro" type="text" name="bairro" placeholder="Bairro">
+            </div>
+            <div class="campos">
+                <label class="labels" for="num">N°: </label>
+                <div class="campoNum">
+                    <input class="txts" id="txtNum" type="text" name="num" placeholder="Número">
+                    <label class="labels" for="nTem"> / Não tem </label>
+                    <input type="checkbox" id="chckBoxNtem" name="ntem">
+                </div>
+            </div>
+            <div class="campos">
+                <label class="labels" for="complemento">Complemento: </label>
+                <input class="txts" id="txtCompl" type="text" name="complemento" placeholder="Complemento">
+            </div>
+            <div class="campos">
+                <label class="labels" for="cidade">Cidade: </label>
+                <input class="txts" id="txtCidade" type="text" name="cidade" placeholder="Cidade">
+            </div>
+            <div class="campos">
+                <label class="labels" for="email">E-mail: </label>
+                <input class="txtsBig" type="email" name="email" placeholder="evorhcontato@gmail.com">
+            </div>
+        </div>
+        <div class="buttons">
+            <input class="btn" id="btnAlt" type="button" value="Alterar">
+            <input class="btn" id="btnAtualizar" type="submit" value="Atualizar">
+            <input class="btn" id="btnExcluir" type="submit" value="Excluir">
+        </div>
+    </form>
 </body>
+
 </html>

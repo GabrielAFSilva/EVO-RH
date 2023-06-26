@@ -18,8 +18,13 @@
             --font-size-very-big: 2.5rem;
             --font-syze-very-very-big: 3rem;
             --txt-syze-small: 100px;
+            --txt-syze-small-medium: 150px;
             --txt-syze-medium: 200px;
+            --txt-syze-small-big: 250px;
             --txt-syze-big: 300px;
+            --txt-syze-very-big: 400px;
+            --txt-syze-master: 700px;
+            --txt-syze-very-master: 850px;
         }
 
         body {
@@ -30,7 +35,6 @@
         }
 
         .containerCad {
-            flex-direction: column;
             background-color: #2F57BD;
             margin-left: 5%;
             margin-right: 5%;
@@ -38,10 +42,13 @@
             padding: 30px 5px 30px 5px;
             border: 0px solid #2F57BD;
             border-radius: 10px;
+        }
+
+        .containerCampos {
             display: flex;
-            flex-direction: row;
             flex-wrap: wrap;
         }
+
 
         .campos {
             display: flex;
@@ -63,14 +70,15 @@
         }
 
         .txtsBig {
-            width: var(--txt-syze-big);
+            width: var(--txt-syze-small-big);
             margin-top: 3px;
             margin-bottom: 10px;
         }
 
         .buttons {
-            margin-top: 20px;
-            margin-right: 10px;
+            padding-top: 20px;
+            padding-right: 10px;
+            text-align: end;
         }
 
         .btn {
@@ -96,59 +104,151 @@
             width: 125px;
             margin-left: 5px;
         }
+
+        @media screen and (min-width: 600px) {
+            .containerCad {
+                margin-top: 30%;
+                margin-left: 10%;
+                margin-right: 10%;
+                padding: 30px 10px 30px 10px;
+            }
+
+            .labels {
+                font-size: var(--font-size-medium);
+            }
+
+            .txts {
+                font-size: var(--font-size-medium);
+                width: var(--txt-syze-small-medium);
+            }
+
+            .txtsBig {
+                font-size: var(--font-size-medium);
+                width: var(--txt-syze-very-big);
+            }
+
+            .btn {
+                height: 30px;
+                font-size: var(--font-size-small);
+            }
+
+            #btnCad {
+                width: 122px;
+            }
+
+            #btnClear {
+                width: 155px;
+            }
+
+            @media screen and (min-width: 1000px) {
+                .containerCad {
+                    margin-top: 15%;
+                    padding: 30px 15px 30px 15px;
+                }
+
+                .cadFun {
+                    font-size: var(--font-size-very-big);
+                }
+
+                .labels {
+                    font-size: var(--font-size-small-big);
+                }
+
+                .txts {
+                    font-size: var(--font-size-small-big);
+                    width: var(--txt-syze-small-big);
+                }
+
+                .txtsBig {
+                    font-size: var(--font-size-small-big);
+                    width: var(--txt-syze-master);
+                }
+
+                .btn {
+                    height: 35px;
+                    font-size: var(--font-size-medium);
+                }
+
+                #btnCad {
+                    width: 150px;
+                }
+
+                #btnClear {
+                    width: 190px;
+                }
+
+            }
+
+            @media screen and (min-width: 1600px) {
+                .containerCad {
+                    margin-top: 8%;
+                    margin-left: 25%;
+                    margin-right: 25%;
+                    padding: 30px 15px 30px 15px;
+                }
+            }
+
+            @media screen and (min-width: 1900px) {
+                .txtsBig {
+                    width: var(--txt-syze-very-master);
+                }
+            }
+        }
     </style>
 </head>
 
 <body>
     <form method="post" class="containerCad">
         <h1 class="cadFun">CADASTRAR FUNCIONÁRIO</h1>
-        <div class="campos">
-            <label class="labels" for="nome">Nome Completo: </label>
-            <input class="txtsBig" id="txtNome" type="text" name="nome" placeholder="Nome Completo">
-        </div>
-        <div class="campos">
-            <label class="labels" for="dtNascimento">Data de Nascimento: </label>
-            <input class="txts" id="txtDtNasci" type="date" name="dtNascimento">
-        </div>
-        <div class="campos">
-            <label class="labels" for="cpf">CPF: </label>
-            <input class="txts" id="txtCpf" type="text" name="cpf" placeholder="999.999.999-99">
-        </div>
-        <div class="campos">
-            <label class="labels" for="celular">Celular: </label>
-            <input class="txts" id="txtCel" type="text" name="celular" placeholder="(99) 99999-9999">
-        </div>
-        <div class="campos">
-            <label class="labels" for="cep">CEP: </label>
-            <input class="txts" id="txtCep" type="text" name="cep" placeholder="99999-999">
-        </div>
-        <div class="campos">
-            <label class="labels" for="rua">Rua: </label>
-            <input class="txtsBig" id="txtRua" type="text" name="rua" placeholder="Rua">
-        </div>
-        <div class="campos">
-            <label class="labels" for="bairro">Bairro: </label>
-            <input class="txts" id="txtBairro" type="text" name="bairro" placeholder="Bairro">
-        </div>
-        <div class="campos"> 
-            <label class="labels" for="num">N°: </label>
-            <div class="campoNum">
-                <input class="txts" id="txtNum" type="text" name="num" placeholder="Número">
-                <label class="labels" for="nTem"> / Não tem </label>
-                <input type="checkbox" id="chckBoxNtem" name="ntem">
+        <div class="containerCampos">
+            <div class="campos">
+                <label class="labels" for="nome">Nome Completo: </label>
+                <input class="txtsBig" id="txtNome" type="text" name="nome" placeholder="Nome Completo">
             </div>
-        </div>
-        <div class="campos">
-            <label class="labels" for="complemento">Complemento: </label>
-            <input class="txts" id="txtCompl" type="text" name="complemento" placeholder="Complemento">
-        </div>
-        <div class="campos">
-            <label class="labels" for="cidade">Cidade: </label>
-            <input class="txts" id="txtCidade" type="text" name="cidade" placeholder="Cidade">
-        </div>
-        <div class="campos">
-            <label class="labels" for="email">E-mail: </label>
-            <input class="txtsBig" type="email" name="email" placeholder="evorhcontato@gmail.com">
+            <div class="campos">
+                <label class="labels" for="dtNascimento">Data de Nascimento: </label>
+                <input class="txts" id="txtDtNasci" type="date" name="dtNascimento">
+            </div>
+            <div class="campos">
+                <label class="labels" for="cpf">CPF: </label>
+                <input class="txts" id="txtCpf" type="text" name="cpf" placeholder="999.999.999-99">
+            </div>
+            <div class="campos">
+                <label class="labels" for="celular">Celular: </label>
+                <input class="txts" id="txtCel" type="text" name="celular" placeholder="(99) 99999-9999">
+            </div>
+            <div class="campos">
+                <label class="labels" for="cep">CEP: </label>
+                <input class="txts" id="txtCep" type="text" name="cep" placeholder="99999-999">
+            </div>
+            <div class="campos">
+                <label class="labels" for="rua">Rua: </label>
+                <input class="txtsBig" id="txtRua" type="text" name="rua" placeholder="Rua">
+            </div>
+            <div class="campos">
+                <label class="labels" for="bairro">Bairro: </label>
+                <input class="txts" id="txtBairro" type="text" name="bairro" placeholder="Bairro">
+            </div>
+            <div class="campos">
+                <label class="labels" for="num">N°: </label>
+                <div class="campoNum">
+                    <input class="txts" id="txtNum" type="text" name="num" placeholder="Número">
+                    <label class="labels" for="nTem"> / Não tem </label>
+                    <input type="checkbox" id="chckBoxNtem" name="ntem">
+                </div>
+            </div>
+            <div class="campos">
+                <label class="labels" for="complemento">Complemento: </label>
+                <input class="txts" id="txtCompl" type="text" name="complemento" placeholder="Complemento">
+            </div>
+            <div class="campos">
+                <label class="labels" for="cidade">Cidade: </label>
+                <input class="txts" id="txtCidade" type="text" name="cidade" placeholder="Cidade">
+            </div>
+            <div class="campos">
+                <label class="labels" for="email">E-mail: </label>
+                <input class="txtsBig" type="email" name="email" placeholder="evorhcontato@gmail.com">
+            </div>
         </div>
         <div class="buttons">
             <input class="btn" id="btnCad" type="submit" value="CADASTRAR">
