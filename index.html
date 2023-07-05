@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Assets/css/cssReset.css">
-    <link rel="stylesheet" href="/Assets/css/stylesheetAll.css">
+    <link rel="stylesheet" href="Assets/css/cssReset.css">
+    <link rel="stylesheet" href="Assets/css/stylesheetAll.css">
     <title>Login</title>
     <style>
         :root {
@@ -62,7 +62,8 @@
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
             display: inline-block;
             text-decoration: none;
-            padding-top: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
 
         .btnEntrar:hover {
@@ -149,20 +150,62 @@
 </head>
 
 <body>
-    <form class="containerLogin">
+    <form class="containerLogin" method="POST" autocomplete="off">
         <h1 class="login"><strong>LOGIN</strong></h1>
         <div class="containerCampos">
             <div class="campoEmail">
                 <label class="labels" for="email">E-mail: </label>
-                <input class="txts" type="text" name="email" placeholder="evorh@gmail.com">
+                <input class="txts" id="txtLogin" type="text" name="email" placeholder="evorh@gmail.com">
             </div>
             <div class="campoSenha">
                 <label class="labels" for="senha">Senha:</label>
                 <input class="txts" id="txtSenha" type="password" name="senha">
             </div>
     </form>
-    <a class="btnEntrar" href="/Assets/pages/home.html">ENTRAR</a>
+    <input type="submit" id="btnSubmit" class="btnEntrar" value="ENTRAR">
     </div>
 </body>
+<script src="Assets/js/script.js"></script>
+<script>
+    const login = document.querySelector('#txtLogin'),
+        senha = document.querySelector('#txtSenha'),
+        submitBtn = document.querySelector('#btnSubmit');
+
+    submitBtn.addEventListener('click', loginAdmin);
+
+
+    async function loginAdmin(event) {
+        event.preventDefault();
+        validarEmail(login.value);
+        if (login.value == '' || senha.value == '') {
+            alert('Preencha todos os campos');
+        }
+        else if (validarEmail(login.value) == false) {
+            alert('Digite um E-mail válido');
+            login.focus();
+        }
+        
+        else {
+            const admin = { email: login.value, senha: senha.value };
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(admin)
+            }
+            await fetch('http://localhost:3333/login', options)
+                .then((res) => {
+                    if (res.status == 400) {
+                        alert('O E-mail ou a senha estão errados, tente novamente.');
+                    }
+                    if (res.status == 200) {
+                        sessionStorage.setItem('usuarioLogado', 1)
+                        window.location.replace("Assets/pages/home.html");
+                    }
+                })
+        }
+    };
+
+
+</script>
 
 </html>

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Assets/css/cssReset.css">
-    <link rel="stylesheet" href="/Assets/css/stylesheetAll.css">
+    <link rel="stylesheet" href="../css/cssReset.css">
+    <link rel="stylesheet" href="../css/stylesheetAll.css">
     <title>Cadastro de Funcionários</title>
     <style>
         :root {
@@ -198,12 +198,13 @@
 </head>
 
 <body>
-    <form method="post" class="containerCad">
+    <form method="post" class="containerCad" id="formCad">
         <h1 class="cadFun">CADASTRAR FUNCIONÁRIO</h1>
         <div class="containerCampos">
             <div class="campos">
                 <label class="labels" for="nome">Nome Completo: </label>
-                <input class="txtsBig" id="txtNome" type="text" name="nome" placeholder="Nome Completo">
+                <input class="txtsBig" minlength="2" maxlength="200" id="txtNome" type="text" name="nome"
+                    placeholder="Nome Completo" autofocus>
             </div>
             <div class="campos">
                 <label class="labels" for="dtNascimento">Data de Nascimento: </label>
@@ -211,50 +212,169 @@
             </div>
             <div class="campos">
                 <label class="labels" for="cpf">CPF: </label>
-                <input class="txts" id="txtCpf" type="text" name="cpf" placeholder="999.999.999-99">
+                <input class="txts" maxlength="14" id="txtCpf" type="text" name="cpf" placeholder="999.999.999-99">
             </div>
             <div class="campos">
                 <label class="labels" for="celular">Celular: </label>
-                <input class="txts" id="txtCel" type="text" name="celular" placeholder="(99) 99999-9999">
+                <input class="txts" maxlength="14" id="txtCel" type="text" name="celular" placeholder="(99) 99999-9999">
             </div>
             <div class="campos">
                 <label class="labels" for="cep">CEP: </label>
-                <input class="txts" id="txtCep" type="text" name="cep" placeholder="99999-999">
+                <input class="txts" minlength="9" maxlength="9" id="txtCep" type="text" name="cep"
+                    placeholder="99999-999">
             </div>
             <div class="campos">
                 <label class="labels" for="rua">Rua: </label>
-                <input class="txtsBig" id="txtRua" type="text" name="rua" placeholder="Rua">
+                <input class="txtsBig" disabled maxlength="100" id="txtRua" type="text" name="rua" placeholder="Rua">
             </div>
             <div class="campos">
                 <label class="labels" for="bairro">Bairro: </label>
-                <input class="txts" id="txtBairro" type="text" name="bairro" placeholder="Bairro">
+                <input class="txts" disabled maxlength="100" id="txtBairro" type="text" name="bairro"
+                    placeholder="Bairro">
             </div>
             <div class="campos">
                 <label class="labels" for="num">N°: </label>
                 <div class="campoNum">
-                    <input class="txts" id="txtNum" type="text" name="num" placeholder="Número">
+                    <input class="txts" maxlength="10" id="txtNum" type="text" name="num" placeholder="Número">
                     <label class="labels" for="nTem"> / Não tem </label>
                     <input type="checkbox" id="chckBoxNtem" name="ntem">
                 </div>
             </div>
             <div class="campos">
                 <label class="labels" for="complemento">Complemento: </label>
-                <input class="txts" id="txtCompl" type="text" name="complemento" placeholder="Complemento">
+                <input class="txts" maxlength="50" id="txtCompl" type="text" name="complemento"
+                    placeholder="Ex. Casa, AP...">
             </div>
             <div class="campos">
                 <label class="labels" for="cidade">Cidade: </label>
-                <input class="txts" id="txtCidade" type="text" name="cidade" placeholder="Cidade">
+                <input class="txts" disabled maxlength="80" id="txtCidade" type="text" name="cidade"
+                    placeholder="Cidade">
             </div>
             <div class="campos">
                 <label class="labels" for="email">E-mail: </label>
-                <input class="txtsBig" type="email" name="email" placeholder="evorhcontato@gmail.com">
+                <input class="txtsBig" maxlength="100" id="txtEmail" type="email" name="email"
+                    placeholder="evorhcontato@gmail.com">
             </div>
         </div>
         <div class="buttons">
             <input class="btn" id="btnCad" type="submit" value="CADASTRAR">
-            <input class="btn" id="btnClear" type="button" value="LIMPAR CAMPOS">
         </div>
     </form>
 </body>
+<script src="../js/script.js"></script>
+<script>
+    const form = document.querySelector('#formCad'),
+        nomeFun = document.querySelector('#txtNome'),
+        dtNascimentoFun = document.querySelector('#txtDtNasci'),
+        cpfFun = document.querySelector('#txtCpf'),
+        celFun = document.querySelector('#txtCel'),
+        cepFun = document.querySelector('#txtCep'),
+        ruaFun = document.querySelector('#txtRua'),
+        bairroFun = document.querySelector('#txtBairro'),
+        numFun = document.querySelector('#txtNum'),
+        ntemFun = document.querySelector('#chckBoxNtem'),
+        complementoFun = document.querySelector('#txtCompl'),
+        cidadeFun = document.querySelector('#txtCidade'),
+        emailFun = document.querySelector('#txtEmail'),
+        btnCadastrar = document.querySelector('#btnCad')
+
+    btnCadastrar.addEventListener("click", Cadastrar);
+    celFun.addEventListener("keypress", formatarTelefone);
+    cpfFun.addEventListener("keypress", formatarCPF);
+    cepFun.addEventListener("keypress", formatarCep);
+    cepFun.addEventListener("change", buscaCep);
+    numFun.addEventListener("keypress", somenteNumeros);
+    numFun.addEventListener("change", desabilitarCheck);
+    ntemFun.addEventListener("change", desabilitarNum);
+
+
+    async function Cadastrar(event) {
+        event.preventDefault();
+        validarEmail(emailFun.value);
+        if (nomeFun.value == '' || dtNascimentoFun.value == '' || cpfFun.value == '' || celFun.value == ''
+            || cepFun.value == '' || ruaFun.value == '' || bairroFun.value == '' || numFun.value == ''
+            || complementoFun.value == '' || cidadeFun.value == '' || emailFun.value == '') {
+            alert('Preencha todos os campos');
+        }
+        else if (validarEmail(emailFun.value) == false) {
+            alert('Digite um E-mail válido');
+            emailFun.focus();
+        }
+        else {
+            const _data = {
+                nome: nomeFun.value,
+                dtNascimento: dtNascimentoFun.value,
+                cpf: cpfFun.value,
+                celular: celFun.value,
+                cep: cepFun.value,
+                rua: ruaFun.value,
+                bairro: bairroFun.value,
+                numero: numFun.value,
+                complemento: complementoFun.value,
+                cidade: cidadeFun.value,
+                email: emailFun.value
+            }
+            const options = {
+                method: 'post',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(_data)
+            }
+            await fetch('http://localhost:3333/funcionarios', options)
+                .then((res) => {
+                    if (res.status == 201) {
+                        nomeFun.value = '';
+                        dtNascimentoFun.value = '';
+                        cpfFun.value = '';
+                        celFun.value = '';
+                        cepFun.value = '';
+                        ruaFun.value = '';
+                        bairroFun.value = '';
+                        numFun.value = '';
+                        complementoFun.value = '';
+                        cidadeFun.value = '';
+                        emailFun.value = '';
+                    }
+                    if (res.status == 400) {
+                        alert('Ocorreu um erro ao cadastrar o funcionário, tente novamente.');
+                    }
+                    console.log(res.status);
+                })
+        }
+    }
+    async function buscaCep() {
+        let cep = cepFun.value;
+        let cep2 = cep.replace(/[^0-9]/g, "");
+        if (cep2.length < 8) {
+            ruaFun.value = '';
+            bairroFun.value = '';
+            cidadeFun.value = '';
+        }
+        else if (cep2.length == 8) {
+            await fetch(`https://viacep.com.br/ws/${cep2}/json/`)
+                .then((res) => {
+                    return res.json();
+                })
+                .then((json) => {
+                    if (json.logadouro == 'undefined' || json.localidade == 'undefined' || json.bairro == 'undefined' || json.erro == true) {
+                        ruaFun.value = '';
+                        bairroFun.value = '';
+                        cidadeFun.value = '';
+                    }
+                    else {
+                        console.log(json);
+                        ruaFun.value = json.logradouro;
+                        cidadeFun.value = json.localidade;
+                        bairroFun.value = json.bairro;
+
+                    }
+                })
+        }
+        else {
+            ruaFun.value = '';
+            bairroFun.value = '';
+            cidadeFun.value = '';
+        }
+    }
+</script>
 
 </html>
